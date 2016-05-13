@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>ToDo App</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="cordova.js"></script>
+    <script src="www/lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="TodoController">
+   <!-- TODO APP CODE  -->
+      <ion-pane>
+       <ion-header-bar class="bar-assertive">
+        <h1 class="title">TODO List</h1>
+        <button class="button button-icon" ng-click="newtask()">
+                <i class="ion-plus icon"></i>
+        </button>
+      </ion-header-bar>
+      <ion-content>
+             <ion-list>
+                 <ion-item class="item-icon-right"
+                           ng-repeat="task in tasks"
+                           ng-click="task.completed = !task.completed"
+                           ng-class="{completed : task.completed }">
+                           <i class="icon ion-ios-arrow-left"></i>
+                           <ion-option-button class="button-assertive" ng-click="tasks.splice($index, 1)">Delete</ion-option-button>
+                           <ion-option-button class="button-energized" ng-click="edit(task)">&nbsp;Edit&nbsp;</ion-option-button>
+                           {{task.title}}
+                         </ion-item>
+             </ion-list>
+           </ion-content>
+    </ion-pane>
+  </body>
+</html>
